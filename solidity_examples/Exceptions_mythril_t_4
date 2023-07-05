@@ -1,0 +1,129 @@
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: Exceptions
+Function name: assert3(uint256)
+PC address: 375
+Estimated Gas Usage: 469 - 564
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: Exceptions.sol:22
+
+input != 23
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [CREATOR], function: assert3(uint256), txdata: 0x546455b50000000000000000000000000000000000000000000000000000000000000000, decoded_data: (0,), value: 0x0
+
+==== Integer Arithmetic Bugs ====
+SWC ID: 101
+Severity: High
+Contract: Exceptions
+Function name: require_is_fine(uint256)
+PC address: 433
+Estimated Gas Usage: 424 - 519
+The arithmetic operator can underflow.
+It is possible to cause an integer overflow or underflow in the arithmetic operation. 
+--------------------
+In file: Exceptions.sol:26
+
+input != 23
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: require_is_fine(uint256), txdata: 0x96b33e2b0000000000000000000000000000000000000000000000000000000000000000, decoded_data: (0,), value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: Exceptions
+Function name: assert1()
+PC address: 661
+Estimated Gas Usage: 224 - 509
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: Exceptions.sol:7
+
+assert(i == 0)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [ATTACKER], function: assert1(), txdata: 0xb34c3610, value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: Exceptions
+Function name: assert3(uint256)
+PC address: 661
+Estimated Gas Usage: 494 - 779
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: Exceptions.sol:22
+
+assert(input != 23)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: assert3(uint256), txdata: 0x546455b50000000000000000000000000000000000000000000000000000000000000017, decoded_data: (23,), value: 0x0
+
+==== Exception State ====
+SWC ID: 110
+Severity: Medium
+Contract: Exceptions
+Function name: assert5(uint256)
+PC address: 661
+Estimated Gas Usage: 1273 - 1558
+An assertion violation was triggered.
+It is possible to trigger an assertion violation. Note that Solidity assert() statements should only be used to check invariants. Review the transaction trace generated for this issue and either make sure your program logic is correct, or use require() instead of assert() if your goal is to constrain user inputs or enforce preconditions. Remember to validate inputs from both callers (for instance, via passed arguments) and callees (for instance, via return values).
+--------------------
+In file: Exceptions.sol:14
+
+assert(input_x > 10)
+
+--------------------
+Initial State:
+
+Account: [CREATOR], balance: 0x0, nonce:0, storage:{}
+Account: [ATTACKER], balance: 0x0, nonce:0, storage:{}
+
+Transaction Sequence:
+
+Caller: [CREATOR], calldata: , decoded_data: , value: 0x0
+Caller: [SOMEGUY], function: counter_increase(), txdata: 0xe47b0253, value: 0x0
+Caller: [SOMEGUY], function: counter_increase(), txdata: 0xe47b0253, value: 0x0
+Caller: [SOMEGUY], function: counter_increase(), txdata: 0xe47b0253, value: 0x0
+Caller: [SOMEGUY], function: assert5(uint256), txdata: 0x1d5d53dd0000000000000000000000000000000000000000000000000000000000000003, decoded_data: (3,), value: 0x0
+
+

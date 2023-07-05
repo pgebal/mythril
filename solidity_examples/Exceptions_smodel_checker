@@ -1,0 +1,84 @@
+Warning: This is a pre-release compiler version, please do not use it in production.
+
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> Exceptions.sol
+
+Warning: Source file does not specify required compiler version!
+--> Exceptions.sol
+
+Warning: Unused local variable.
+  --> Exceptions.sol:31:13:
+   |
+31 |             uint256 i = 1/input;
+   |             ^^^^^^^^^
+
+Warning: Unused local variable.
+  --> Exceptions.sol:37:13:
+   |
+37 |             uint256 i = myarray[index];
+   |             ^^^^^^^^^
+
+Warning: CHC: Assertion violation happens here.
+Counterexample:
+myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 0
+i = 1
+
+Transaction trace:
+Exceptions.constructor()
+State: myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 0
+Exceptions.assert1()
+ --> Exceptions.sol:7:9:
+  |
+7 |         assert(i == 0);
+  |         ^^^^^^^^^^^^^^
+
+Warning: CHC: Assertion violation happens here.
+Counterexample:
+myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 3
+input_x = 0
+
+Transaction trace:
+Exceptions.constructor()
+State: myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 0
+Exceptions.counter_increase()
+State: myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 1
+Exceptions.counter_increase()
+State: myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 2
+Exceptions.counter_increase()
+State: myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 3
+Exceptions.assert5(0)
+  --> Exceptions.sol:14:9:
+   |
+14 |         assert(input_x > 10);
+   |         ^^^^^^^^^^^^^^^^^^^^
+
+Warning: CHC: Assertion violation happens here.
+Counterexample:
+myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 0
+input = 23
+
+Transaction trace:
+Exceptions.constructor()
+State: myarray = [0, 0, 0, 0, 0, 0, 0, 0], counter = 0
+Exceptions.assert3(23)
+  --> Exceptions.sol:22:9:
+   |
+22 |         assert(input != 23);
+   |         ^^^^^^^^^^^^^^^^^^^
+
+Warning: CHC: 1 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.
+
+Info: CHC: 3 verification condition(s) proved safe! Enable the model checker option "show proved safe" to see all of them.
+
+Warning: BMC: Overflow (resulting value larger than 2**256 - 1) happens here.
+  --> Exceptions.sol:10:9:
+   |
+10 |         counter+=1;
+   |         ^^^^^^^^^^
+Note: Counterexample:
+  <result> = 2**256
+  counter = 2**256 - 1
+
+Note: Callstack:
+Note:
+
